@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Question</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f14;
+      font-family: 'Georgia', serif;
+      color: #f5f5f5;
+      overflow: hidden;
+    }
+
+    .card {
+      text-align: center;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: transparent;
+      color: #f5f5f5;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .yaay {
+      position: absolute;
+      font-size: 14px;
+      opacity: 0;
+      animation: float 2.5s ease forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Cheryl</h1>
+    <p>
+      There are a lot of ordinary days.<br>
+      And then there are days you choose to make special.
+    </p>
+
+    <h1>Will you be my Valentine?</h1>
+
+    <button onclick="sayYes()">Yes</button>
+    <button onclick="sayNo()">No</button>
+  </div>
+
+  <script>
+    function sayYes() {
+      for (let i = 0; i < 18; i++) {
+        createYaay();
+      }
+    }
+
+    function sayNo() {
+      alert("That option was never real.");
+    }
+
+    function createYaay() {
+      const yaay = document.createElement("div");
+      yaay.className = "yaay";
+      yaay.innerText = "yaay";
+
+      yaay.style.left = Math.random() * 100 + "vw";
+      yaay.style.bottom = "20px";
+      yaay.style.animationDuration = (2 + Math.random()) + "s";
+
+      document.body.appendChild(yaay);
+
+      setTimeout(() => {
+        yaay.remove();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
